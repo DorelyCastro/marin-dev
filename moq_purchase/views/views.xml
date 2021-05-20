@@ -1,0 +1,43 @@
+<odoo>
+  <data>
+    <record id="moq_product_supplierinfo" model="ir.ui.view">
+        <field name="name">moq.product.supplierinfo</field>
+        <field name="model">product.supplierinfo</field>
+        <field name="inherit_id" ref="product.product_supplierinfo_tree_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='company_id']" position="before">
+                <field name="omc"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="moq_product_supplierinfo_form" model="ir.ui.view">
+        <field name="name">moq.product.supplierinfo.form</field>
+        <field name="model">product.supplierinfo</field>
+        <field name="inherit_id" ref="product.product_supplierinfo_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//label[@for='price']" position="before">
+              <label for="omc"/>
+              <div class="o_row">
+                  <field name="omc"/>
+              </div>
+            </xpath>
+        </field>
+    </record>
+
+
+
+    <record id="moq_purchase_order_line_form" model="ir.ui.view">
+        <field name="name">moq.purchase.order.form</field>
+        <field name="model">purchase.order</field>
+        <field name="inherit_id" ref="purchase.purchase_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='product_qty']" position="before">
+              <field name="umc" readonly="1"/>
+            </xpath>
+        </field>
+    </record>
+
+
+  </data>
+</odoo>
