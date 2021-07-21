@@ -20,7 +20,7 @@ class informeBatchm(models.Model):
             ('route_ids', 'ilike', 'Fabri'),
             ('location_id', 'not ilike', 'virtual'),
             ('picking_type_id', 'ilike', 'Manufac'),
-            ('state', 'in', ['confirmed', 'partially_available']),
+            ('state', 'in', ['confirmed', 'partially_available', 'waiting']),
         ])
         product_ids = sale_ids.mapped('product_id')
         for product_id in product_ids:
