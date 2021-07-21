@@ -54,18 +54,12 @@ class batchminDetalle(models.Model):
     @api.depends('product_qty', 'cantidad_reservada')
     def _compute_cantidad_real(self):
         for record in self:
-            if record.product_qty and record.cantidad_reservada:
-                record.cantidad_real = record.product_qty - record.cantidad_reservada
-            else:
-                record.cantidad_real = 0.0
+            record.cantidad_real = record.product_qty - record.cantidad_reservada
 
     @api.depends('cantidad_real', 'batch_minimo')
     def _compute_diferencia(self):
         for record in self:
-            if record.cantidad_real and record.batch_minimo:
-                record.diferencia = record.batch_minimo - record.cantidad_real
-            else:
-                record.diferencia = 0.0
+            record.diferencia = record.batch_minimo - record.cantidad_real
 
 class bomProduct(models.Model):
     _inherit = 'stock.move'
