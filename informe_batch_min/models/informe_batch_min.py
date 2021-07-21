@@ -17,7 +17,7 @@ class informeBatchm(models.Model):
         for detalle in self.detalle_ids:
             detalle.unlink()
         sale_ids = self.env['stock.move'].search([
-            ('route_ids', 'ilike', 'Fabri'),
+            ('route_ids', 'ilike', 'Manufac'),
             ('location_id', 'not ilike', 'virtual'),
             ('picking_type_id', 'ilike', 'Manufac'),
             ('state', 'in', ['confirmed', 'partially_available', 'waiting']),
