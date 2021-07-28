@@ -18,12 +18,14 @@
         <field name="arch" type='xml'>
             <form>
                 <header>
-                    <button string="Calcular" type="object" name="calcular" class="oe_highlight"/>
+                    <button string="Calculate" type="object" name="calcular" class="oe_highlight"/>
+                    <button string="Create Manufacturing Order" type="object" name="create_orderP" class="oe_highlight"/>
                 </header>
                 <sheet>
                     <h1><field name="name"/></h1>
                     <group>
                         <group>
+                            <field name="categ_id" required="1"/>
                         </group>
                         <group>
                             <field name="ultima_actualizacion" readonly="1"/>
@@ -38,12 +40,16 @@
                             <field name="batch_minimo" readonly="1"/>
                             <field name="cantidad_real" readonly="1"/>
                             <field name="diferencia" readonly="1"/>
+                            <field name="n_batch" readonly="1"/>
+                            <field name="ready" widget="boolean_toggle"/>
                         </tree>
                         <form>
                             <group>
                                 <group>
                                      <field name="product_id" readonly="1" options="{'no_open': True, 'no_create': True}"/>
                                      <field name="product_name"/>
+                                    <field name="n_batch" readonly="1"/>
+                                     <field name="ready" widget="boolean_toggle"/>
                                 </group>
                                 <group>
                                     <field name="product_qty" readonly="1"/>
